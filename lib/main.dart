@@ -22,26 +22,31 @@ class HomePage extends StatelessWidget{
           title: Text('DashBoard'),
         ),
 
-        body:Row(
+        body: Column(
           children: <Widget>[
             Container(
               padding:EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: 16,top: 32),
+              margin: EdgeInsets.only(left: 16,top: 32,right: 16),
               height: 80,
-              width: 80,
+              width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.green,
-                  borderRadius:BorderRadius.circular(8)
+                  borderRadius:BorderRadius.circular(8),
               ),
+              child: Text('banner',style: TextStyle(color: Colors.white),maxLines: 1,),
+
             ),
             Container(
               padding:EdgeInsets.all(10),
               margin: EdgeInsets.only(left: 16,top: 32),
               height: 80,
-              width: 80,
+              width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.green,
                   borderRadius:BorderRadius.circular(8)
+              ),
+              child: ButtonTheme(
+                child: Text('click',),
               ),
             ),
             Container(
@@ -56,7 +61,9 @@ class HomePage extends StatelessWidget{
             ),
 
           ],
-        )
+        ),
+        backgroundColor: Colors.tealAccent,
+
 
       ),
     );
