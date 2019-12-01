@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+
 
 void main(){
   runApp(
@@ -22,51 +25,70 @@ class HomePage extends StatelessWidget{
           title: Text('DashBoard'),
         ),
 
-        body: Column(
-          children: <Widget>[
-            Container(
-              padding:EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: 16,top: 32,right: 16),
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius:BorderRadius.circular(8),
-              ),
-              child: Text('banner',style: TextStyle(color: Colors.white),maxLines: 1,),
+        body:Container(
+          color: Colors.tealAccent,
+           width: double.infinity,
+           height: double.infinity,
+           child: Column(
+              children: <Widget>[
+                Center(
+                  child: Text("Calculator",style: TextStyle(fontSize: 24,color: Colors.red),),
+                ),
+                Row(children: <Widget>[
+                   RaisedButton(
+                     textColor: Colors.white,
+                     color: Colors.tealAccent,
+                     child: Text(
+                       "1", style: TextStyle(fontSize: 22,)),
 
-            ),
-            Container(
-              padding:EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: 16,top: 32),
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius:BorderRadius.circular(8)
-              ),
-              child: ButtonTheme(
-                child: Text('click',),
-              ),
-            ),
-            Container(
-              padding:EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: 16,top: 32),
-              height: 80,
-              width: 80,
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius:BorderRadius.circular(8)
-              ),
-            ),
+                     shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(5)),
+                  ),
+                  RaisedButton(
+                     textColor: Colors.white,
+                     color: Colors.tealAccent,
+                     child: Text(
+                       "2", style: TextStyle(fontSize: 22,)),
 
-          ],
-        ),
-        backgroundColor: Colors.tealAccent,
+                     shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(5)),
+                    onPressed: showToast(context,"2"),
+                  ),
+                  FlatButton(
+
+                    textTheme: ButtonTextTheme.primary,
+                     child: Text(
+                       "3", style: TextStyle(fontSize: 22,)),
+
+                     shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(5)),
+                    disabledColor: Colors.red,
+                    onPressed: showToast(context,"3"),
+
+                  ),
+
+                ],
+
+                )
 
 
-      ),
+              ],
+
+
+            )
+        )
+
+             ),
     );
   }
+
+  showToast(context, msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        textColor: Colors.white,
+        toastLength: Toast.LENGTH_SHORT,
+        timeInSecForIos: 1,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.indigo,
+    );
+  }
+
 }
 
