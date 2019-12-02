@@ -39,7 +39,7 @@ class _myAppState extends State<MyHomePage> {
               children: <Widget>[
                 Center(
                   child: Text(
-                    "1",
+                    "CLick: $clicktime",
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
@@ -47,7 +47,8 @@ class _myAppState extends State<MyHomePage> {
                   child: RaisedButton(
                     color: Colors.red,
                     child: Text("Click"),
-                    onPressed: _clickme(),
+                    onPressed: _clickme,
+
                   ),
                 ),
               ],
@@ -56,7 +57,10 @@ class _myAppState extends State<MyHomePage> {
     );
   }
 
+  int clicktime=0;
   _clickme() {
-    print("Click Button");
+    setState(() {
+      clicktime++;
+    });
   }
 }
