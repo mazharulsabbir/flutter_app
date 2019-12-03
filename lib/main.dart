@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Jannat RannaGhor',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         primarySwatch: Colors.blue,
@@ -29,35 +29,64 @@ class _myAppState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      child: Scaffold(
-          appBar: AppBar(
-            title: Text("Home Page"),
-            centerTitle: true,
-          ),
-          body: Container(
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    "CLick: $clicktime",
-                    style: TextStyle(fontSize: 22),
-                  ),
+        child: Scaffold(
+      backgroundColor: Colors.tealAccent,
+      appBar: AppBar(
+        title: Text("DashBoard"),
+        centerTitle: true,
+      ),
+      resizeToAvoidBottomInset: false,
+      body: Container(
+          child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: Container(
+                margin: EdgeInsets.only(top: 16.0),
+                child: Text(
+                  "-- রান্না ঘর --",
+                  style: TextStyle(fontSize: 26),
                 ),
-                Center(
-                  child: RaisedButton(
-                    color: Colors.red,
-                    child: Text("Click"),
-                    onPressed: _clickme,
-
-                  ),
-                ),
-              ],
+              ),
             ),
-          )),
-    );
+            Image(image: AssetImage('assets/food_icon.png'),),
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(6, (index) {
+                return Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Container $index");
+                    },
+                    child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        color: Colors.white,
+                        margin: EdgeInsets.all(8.0),
+                        child: Column(
+                          children: <Widget>[
+
+                            Center(
+                              child: Text(
+                                'Item $index',
+                                style: Theme.of(context).textTheme.headline,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                );
+              }),
+            )
+          ],
+        ),
+      )),
+    ));
   }
 
-  int clicktime=0;
+  int clicktime = 0;
+
   _clickme() {
     setState(() {
       clicktime++;
