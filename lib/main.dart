@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app/FoodItemList.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -49,15 +49,15 @@ class _myAppState extends State<MyHomePage> {
                 ),
               ),
             ),
-
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
-              children: List.generate(6, (index) {
+              children: List.generate(10, (index) {
                 return Center(
                   child: GestureDetector(
                     onTap: () {
                       //Container Click
+
                     },
                     child: Container(
                         width: double.infinity,
@@ -106,5 +106,13 @@ class _myAppState extends State<MyHomePage> {
     Scaffold.of(context).showSnackBar(new SnackBar(
         content: new Text(value)
     ));
+  }
+
+  void gotoSecondActivity(){
+//    Navigator.push(
+//        context,
+//        new MaterialPageRoute(
+//            builder: (BuildContext context) =>
+//           ));
   }
 }
