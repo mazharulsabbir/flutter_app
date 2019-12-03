@@ -49,7 +49,7 @@ class _myAppState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Image(image: AssetImage('assets/food_icon.png'),),
+
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
@@ -57,24 +57,34 @@ class _myAppState extends State<MyHomePage> {
                 return Center(
                   child: GestureDetector(
                     onTap: () {
-                      print("Container $index");
+                      //Container Click
                     },
                     child: Container(
                         width: double.infinity,
                         height: double.infinity,
                         color: Colors.white,
                         margin: EdgeInsets.all(8.0),
-                        child: Column(
-                          children: <Widget>[
-
-                            Center(
-                              child: Text(
-                                'Item $index',
-                                style: Theme.of(context).textTheme.headline,
+                        child: Center(
+                          child:Column(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.all(8),
+                                width: 120,
+                                height: 120,
+                                child: Image(
+                                  image: AssetImage('assets/food_icon.jpg'),
+                                ),
                               ),
-                            ),
-                          ],
-                        )),
+
+                              Center(
+                                child: Text(
+                                  'Item $index',
+                                  style: Theme.of(context).textTheme.headline,
+                                ),
+                              ),
+                            ],
+                          )) ,
+                        ),
                   ),
                 );
               }),
@@ -91,5 +101,10 @@ class _myAppState extends State<MyHomePage> {
     setState(() {
       clicktime++;
     });
+  }
+  void showInSnackBar(String value) {
+    Scaffold.of(context).showSnackBar(new SnackBar(
+        content: new Text(value)
+    ));
   }
 }
