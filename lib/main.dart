@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/FoodItemList.dart';
+
+import 'FoodItemList.dart';
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,84 +17,70 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class MyHomePage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _myAppState();
-  }
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _myAppState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Container(
-        child: Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.tealAccent,
       appBar: AppBar(
-        title: Text("DashBoard"),
+        title: Text("-- রান্না ঘর --"),
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      body: Container(
-          child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Center(
-              child: Container(
-                margin: EdgeInsets.only(top: 16.0),
-                child: Text(
-                  "-- রান্না ঘর --",
-                  style: TextStyle(fontSize: 26),
-                ),
-              ),
-            ),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              children: List.generate(10, (index) {
-                return Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      //Container Click
-
-                    },
-                    child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        color: Colors.white,
-                        margin: EdgeInsets.all(8.0),
-                        child: Center(
-                          child:Column(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.all(8),
-                                width: 120,
-                                height: 120,
-                                child: Image(
-                                  image: AssetImage('assets/food_icon.jpg'),
-                                ),
-                              ),
-
-                              Center(
-                                child: Text(
-                                  'Item $index',
-                                  style: Theme.of(context).textTheme.headline,
-                                ),
-                              ),
-                            ],
-                          )) ,
+      body: SingleChildScrollView(
+        child: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    children: List.generate(10, (index) {
+                      return Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            gotoSecondActivity();
+                            //Container Click
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            color: Colors.white,
+                            margin: EdgeInsets.all(8.0),
+                            child: Center(
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.all(8),
+                                      width: 120,
+                                      height: 120,
+                                      child: Image(
+                                        image: AssetImage('assets/food_icon.jpg'),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        'Item $index',
+                                        style: Theme.of(context).textTheme.headline,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
                         ),
-                  ),
-                );
-              }),
-            )
-          ],
-        ),
-      )),
-    ));
+                      );
+                    }),
+                  )
+                ],
+              ),
+            )),
+      ),
+    );
   }
 
   int clicktime = 0;
@@ -102,17 +90,13 @@ class _myAppState extends State<MyHomePage> {
       clicktime++;
     });
   }
+
   void showInSnackBar(String value) {
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text(value)
-    ));
+    Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(value)));
   }
 
-  void gotoSecondActivity(){
-//    Navigator.push(
-//        context,
-//        new MaterialPageRoute(
-//            builder: (BuildContext context) =>
-//           ));
+  void gotoSecondActivity() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ListActivity()));
   }
 }
