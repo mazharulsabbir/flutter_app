@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'FoodItemList.dart';
 
@@ -23,77 +24,96 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  Material myItems(IconData icon,String heading, int color){
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      shadowColor: Color(0x802196F3),
+      borderRadius: BorderRadius.circular(24.0),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  //Text
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(heading,
+                    style: TextStyle(
+                      color: new Color(color),
+                      fontSize: 20.0,
+                    ),),
+                  ),
+
+                  //Icons
+                  Material(
+                    color: new Color(color),
+                    borderRadius: BorderRadius.circular(24.0),
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Icon(
+                        icon,
+                      color: Colors.white,),
+
+                    ),
+
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.tealAccent,
       appBar: AppBar(
-        title: Text("-- রান্না ঘর --"),
+        title: Text("-- রান্না ঘর --",style: TextStyle(fontSize: 28),),
         centerTitle: true,
       ),
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    children: List.generate(10, (index) {
-                      return Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            gotoSecondActivity();
-                            //Container Click
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: double.infinity,
-                            color: Colors.white,
-                            margin: EdgeInsets.all(8.0),
-                            child: Center(
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      margin: EdgeInsets.all(8),
-                                      width: 120,
-                                      height: 120,
-                                      child: Image(
-                                        image: AssetImage('assets/food_icon.jpg'),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: Text(
-                                        'Item $index',
-                                        style: Theme.of(context).textTheme.headline,
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          ),
-                        ),
-                      );
-                    }),
-                  )
-                ],
-              ),
-            )),
-      ),
+
+
+     body: StaggeredGridView.count(
+       crossAxisCount: 2,
+       crossAxisSpacing: 12.0,
+       mainAxisSpacing: 12.0,
+       padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0),
+      children: <Widget>[
+        myItems(Icons.graphic_eq,"TotalViews",0xffed622b),
+        myItems(Icons.bookmark,"Bookmark",0xffed622b),
+        myItems(Icons.notifications,"Notifications",0xffed622b),
+        myItems(Icons.attach_money,"Balance",0xffed622b),
+        myItems(Icons.settings,"Settings",0xffed622b),
+        myItems(Icons.group_work,"Group Work",0xffed622b),
+        myItems(Icons.message,"Message",0xffed622b),
+      ],
+       staggeredTiles: [
+         StaggeredTile.extent(1, 150.0),
+         StaggeredTile.extent(1, 150.0),
+
+         StaggeredTile.extent(2, 130.0),
+
+         StaggeredTile.extent(1, 150.0),
+         StaggeredTile.extent(1, 250.0),
+         StaggeredTile.extent(1, 150.0),
+         StaggeredTile.extent(1, 150.0),
+       ],
+
+
+     ),
     );
   }
 
-  int clicktime = 0;
-
-  _clickme() {
-    setState(() {
-      clicktime++;
-    });
-  }
-
-  void showInSnackBar(String value) {
-    Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(value)));
-  }
 
   void gotoSecondActivity() {
     Navigator.of(context)
