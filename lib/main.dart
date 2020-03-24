@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'FoodItemList.dart';
@@ -25,48 +26,57 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+
+
   Material myItems(IconData icon,String heading, int color){
     return Material(
+
       color: Colors.white,
       elevation: 14.0,
       shadowColor: Color(0x802196F3),
       borderRadius: BorderRadius.circular(24.0),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
+      child: GestureDetector(
+        onTap: (){
+          gotoSecondActivity();
+        },
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Column(
 
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  //Text
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(heading,
-                    style: TextStyle(
-                      color: new Color(color),
-                      fontSize: 20.0,
-                    ),),
-                  ),
-
-                  //Icons
-                  Material(
-                    color: new Color(color),
-                    borderRadius: BorderRadius.circular(24.0),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Icon(
-                        icon,
-                      color: Colors.white,),
-
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    //Text
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(heading,
+                      style: TextStyle(
+                        color: new Color(color),
+                        fontSize: 20.0,
+                      ),
+                      ),
                     ),
 
-                  )
-                ],
-              )
-            ],
+                    //Icons
+                    Material(
+                      color: new Color(color),
+                      borderRadius: BorderRadius.circular(24.0),
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Icon(
+                          icon,
+                        color: Colors.white,),
+
+                      ),
+
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -89,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
        mainAxisSpacing: 12.0,
        padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0),
       children: <Widget>[
+
         myItems(Icons.graphic_eq,"TotalViews",0xffed622b),
         myItems(Icons.bookmark,"Bookmark",0xffed622b),
         myItems(Icons.notifications,"Notifications",0xffed622b),
@@ -98,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
         myItems(Icons.message,"Message",0xffed622b),
       ],
        staggeredTiles: [
+
          StaggeredTile.extent(1, 150.0),
          StaggeredTile.extent(1, 150.0),
 
@@ -108,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
          StaggeredTile.extent(1, 150.0),
          StaggeredTile.extent(1, 150.0),
        ],
+
 
 
      ),
