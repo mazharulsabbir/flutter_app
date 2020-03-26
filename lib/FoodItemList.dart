@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/FoodDetails.dart';
 
 class ListActivity extends StatefulWidget {
   @override
@@ -39,15 +40,13 @@ class _ListActivityState extends State<ListActivity> {
           itemCount: list_item.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: (){
-                print(index);
-
-              },
-              child: listContainer(
-                    context, Icons.fastfood, list_item[index], "10000")
-            );
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FoodDetails()));
+                },
+                child: listContainer(
+                    context, Icons.fastfood, list_item[index], "10000"));
           },
-
         ));
   }
 }
@@ -96,8 +95,7 @@ listContainer(BuildContext context, IconData image, String name, String like) {
               ),
               Text(
                 like.toString(),
-                style:
-                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ],
           )
