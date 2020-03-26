@@ -6,40 +6,55 @@ class ListActivity extends StatefulWidget {
 }
 
 class _ListActivityState extends State<ListActivity> {
+  List<String> list_item = [
+    "1",
+    "2",
+    "Third",
+    "4",
+    "2",
+    "Third",
+    "4",
+    "2",
+    "Third",
+    "4",
+    "2",
+    "Third",
+    "4",
+    "2",
+    "Third",
+    "4"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            title: Text(
-              "Pitha",
-              style: TextStyle(fontSize: 28),
-            ),
-            snap: false,
-            pinned: true,
-            centerTitle: true,
+        appBar: AppBar(
+          title: Text(
+            "Pitha",
+            style: TextStyle(fontSize: 28),
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(<Widget>[
-              listContainer(context,Icons.fastfood, "Chicken Fry", 5),
-              listContainer(context,Icons.fastfood, "Chicken Fry", 5),
-              listContainer(context,Icons.fastfood, "Noddoles aljfg aksd kjad lkasdflkj asldkjf lakjsd lkajsdflkjasd hflkjasd flkjas dfla sf kjh ", 5),
-              listContainer(context,Icons.fastfood, "Noddoles alj lakjsd lkajsdflkjasd hflkjasd flkjas dfla sf kjh ", 5),
-              listContainer(context,Icons.fastfood, "Noddoles aljas dfla sf kjh ", 5),
-              listContainer(context,Icons.fastfood, "Noddoles aljfla sf kjh ", 5),
-            ]),
-          )
-        ],
-      ),
-    );
+          centerTitle: true,
+        ),
+        body: ListView.builder(
+          itemCount: list_item.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: (){
+                print(index);
+
+              },
+              child: listContainer(
+                    context, Icons.fastfood, list_item[index], "10000")
+            );
+          },
+
+        ));
   }
 }
 
-listContainer(BuildContext context,IconData image, String name, int like) {
+listContainer(BuildContext context, IconData image, String name, String like) {
   return Card(
     child: Container(
-      
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -55,39 +70,34 @@ listContainer(BuildContext context,IconData image, String name, int like) {
                   backgroundImage: AssetImage("assets/food_icon.jpg"),
                 ),
               ),
-
-
               Row(
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.70,
-                    child: Text(name,
+                    child: Text(
+                      name,
                       overflow: TextOverflow.fade,
-                      style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
                     ),
                   ),
                 ],
               )
             ],
           ),
-          Stack(
-            overflow: Overflow.visible,
-            fit: StackFit.loose,
+          Column(
             children: <Widget>[
-              Positioned(
-                  child: Icon(
+              Icon(
                 Icons.favorite,
                 color: Colors.red,
                 size: 35.0,
-              )),
-              Positioned(
-                top: 8,
-                left: 13,
-                child: Text(
-                  like.toString(),
-                  style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                ),
+              ),
+              Text(
+                like.toString(),
+                style:
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ],
           )
