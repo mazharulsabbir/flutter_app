@@ -31,26 +31,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Material myItems(IconData icon,String heading, int color){
     return Material(
 
-      color: Colors.white,
-      elevation: 14.0,
-      shadowColor: Color(0x802196F3),
-      borderRadius: BorderRadius.circular(24.0),
       child: GestureDetector(
         onTap: (){
           gotoSecondActivity();
         },
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+        child: Material(
+          borderRadius: BorderRadius.circular(25),
+          elevation: 4,
+          child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Column(
-
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-
-
                     //Icons
                     Material(
                       color: new Color(color),
@@ -89,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("-- রান্না ঘর --",style: TextStyle(fontSize: 28),),
         centerTitle: true,
@@ -100,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
        crossAxisCount: 2,
        crossAxisSpacing: 12.0,
        mainAxisSpacing: 12.0,
-       padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0),
+       padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 8.0),
       children: <Widget>[
 
         myItems(Icons.fastfood,"নাস্তা",0xffed622b),
