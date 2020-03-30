@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class FoodDetails extends StatelessWidget {
+  String name;
+  FoodDetails({this.name});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,17 +13,23 @@ class FoodDetails extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new FoodHome(),
+      home: new FoodHome(name),
     );
   }
 }
 
 class FoodHome extends StatefulWidget {
+  String name;
+  FoodHome(this.name);
+
   @override
-  _FoodHomeState createState() => _FoodHomeState();
+  _FoodHomeState createState() => _FoodHomeState(name);
 }
 
 class _FoodHomeState extends State<FoodHome> {
+  String name;
+  _FoodHomeState(this.name);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +56,12 @@ class _FoodHomeState extends State<FoodHome> {
                 color: Colors.blue,
               ),
               child: Text(
-                "১. ওভেন ৩৫০ ডিগ্রী ফারেনহাইটে প্রি-হিট  asldkja sdadg dsgdasdjকরুন",
+                name,
                 style: TextStyle(fontSize: 18.0, color: Colors.white),
               ),
+
             ),
-            centerTitle: false,
+            centerTitle: true,
             background: Hero(
               tag: "service_icn",
               child: Image(

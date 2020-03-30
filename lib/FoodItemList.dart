@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/FoodDetails.dart';
+import 'package:http/http.dart' as http;
+
 
 class ListActivity extends StatefulWidget {
   @override
@@ -7,24 +10,29 @@ class ListActivity extends StatefulWidget {
 }
 
 class _ListActivityState extends State<ListActivity> {
-  List<String> list_item = [
-    "1",
-    "2",
-    "Third",
-    "4",
-    "2",
-    "Third",
-    "4",
-    "2",
-    "Third",
-    "4",
-    "2",
-    "Third",
-    "4",
-    "2",
-    "Third",
-    "4"
-  ];
+
+  List list_item;
+
+
+  Future getData() async{
+    var url="http://rannaghor.tarmsbd.com/api/recipe.php";
+    http.Response response= await http.get(
+        url
+    );
+
+    setState(() {
+      list_item=jsonDecode(response.body);
+    });
+
+  }
+
+
+  @override
+  void initState() {
+
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +45,15 @@ class _ListActivityState extends State<ListActivity> {
           centerTitle: true,
         ),
         body: ListView.builder(
-          itemCount: list_item.length,
+          itemCount: list_item==null ? 0: list_item.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => FoodDetails()));
+                      MaterialPageRoute(builder: (context) => FoodDetails( name: list_item[index]["name"] )));
                 },
                 child: listContainer(
-                    context, Icons.fastfood, list_item[index], "10000"));
+                    context, Icons.fastfood, list_item[index]["name"], "10000"));
           },
         ));
   }
