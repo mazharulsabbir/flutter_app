@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:advanced_share/advanced_share.dart';
 
 
 class FoodDetails extends StatelessWidget {
@@ -31,9 +30,7 @@ class _FoodHomeState extends State<FoodHome> {
         SliverAppBar(
           actions: <Widget>[
             IconButton(icon: Icon(Icons.share), onPressed: () {
-              AdvancedShare.generic(msg: "Hello", url: BASE64_IMAGE).then((response) {
-                handleResponse(response);
-              });
+
 
             }),
             IconButton(icon: Icon(Icons.favorite), onPressed: () {

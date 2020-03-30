@@ -33,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       child: GestureDetector(
         onTap: (){
+
+
           gotoSecondActivity();
         },
         child: Material(
@@ -94,6 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
        crossAxisCount: 2,
        crossAxisSpacing: 12.0,
        mainAxisSpacing: 12.0,
+
+
        padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 8.0),
       children: <Widget>[
 
@@ -136,6 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
        ],
+
+
 
 
 
