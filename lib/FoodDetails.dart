@@ -49,17 +49,9 @@ class _FoodHomeState extends State<FoodHome> {
           floating: false,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
-            titlePadding: EdgeInsets.only(left:0,top:0,right: 60),
-            title: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                name,
-                style: TextStyle(fontSize: 18.0, color: Colors.white),
-              ),
-
+            title: Text(
+              name,
+              style: TextStyle(fontSize: 28.0, color: Colors.white),
             ),
             centerTitle: true,
             background: Hero(
