@@ -18,7 +18,6 @@ class _FoodHomeState extends State<FoodDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         body: CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
@@ -98,9 +97,77 @@ class _FoodHomeState extends State<FoodDetails> {
                 ),
               ),
             ),
+            Container(
+              color: Colors.lightBlueAccent.withOpacity(.5),
+              width: double.infinity,
+              child: Row(
+                children: <Widget>[
+
+                  Container(
+                    padding: EdgeInsets.all(4),
+                    width: MediaQuery.of(context).size.width*.15,
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.favorite,
+                        size: 32,
+                        color: Colors.black54,
+                      )),
+                  GestureDetector(
+                    onTap: (){
+                      showBottomsheet();
+                    },
+                    child: Container(
+
+                        padding: EdgeInsets.all(4),
+
+                        width: MediaQuery.of(context).size.width*.7,
+
+                        color: Colors.amber,
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.comment,
+                              size: 32,
+                              color: Colors.black54,
+                            ),
+                            Text("Comments",style: TextStyle(fontSize: 18),)
+                          ],
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.all(4),
+
+                      width: MediaQuery.of(context).size.width*.15,
+
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.favorite,
+                        size: 32,
+                        color: Colors.black54,
+                      )),
+                ],
+              ),
+            ),
           ]),
         ),
       ],
     ));
+  }
+
+  void showBottomsheet() {
+    showModalBottomSheet(context: context, builder: (context){
+      return Container(
+        color: Colors.amber,
+        child: Column(
+          children: <Widget>[
+            TextField(
+              decoration: new InputDecoration.collapsed(
+                  hintText: 'Comment'
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
