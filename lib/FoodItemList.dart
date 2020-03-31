@@ -49,15 +49,21 @@ class _ListActivityState extends State<ListActivity> {
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
                 onTap: () {
+                  List detais=passData(index);
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => FoodDetails( name: list_item[index]["name"] )));
+                      MaterialPageRoute(builder: (context) => FoodDetails( details: detais)));
                 },
                 child: listContainer(
                     context, Icons.fastfood, list_item[index]["name"], "10000"));
           },
         ));
   }
+  List passData(int index) {
+    List<String> allDetails =[list_item[index]["name"],list_item[index]["materials"],list_item[index]["recipe"],list_item[index]["id"]];
+    return allDetails;
+  }
 }
+
 
 listContainer(BuildContext context, IconData image, String name, String like) {
   return Card(
