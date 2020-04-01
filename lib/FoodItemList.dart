@@ -10,6 +10,7 @@ class ListActivity extends StatefulWidget {
 }
 
 class _ListActivityState extends State<ListActivity> {
+  bool isShowing= true;
 
   List list_item;
 
@@ -22,6 +23,7 @@ class _ListActivityState extends State<ListActivity> {
 
     setState(() {
       list_item=jsonDecode(response.body);
+      isShowing=false;
     });
 
   }
@@ -44,20 +46,34 @@ class _ListActivityState extends State<ListActivity> {
           ),
           centerTitle: true,
         ),
-        body: ListView.builder(
-          itemCount: list_item==null ? 0: list_item.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => FoodDetails( name: list_item[index]["name"] )));
-                },
-                child: listContainer(
-                    context, Icons.fastfood, list_item[index]["name"], "10000"));
-          },
+        body: Stack(
+          children: <Widget>[
+            ListView.builder(
+              itemCount: list_item==null ? 0: list_item.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                    onTap: () {
+                      List detais=passData(index);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => FoodDetails( details: detais)));
+                    },
+                    child: listContainer(
+                        context, Icons.fastfood, list_item[index]["name"], "10000"));
+              },
+            ),
+            isShowing ==true? Center(child:CircularProgressIndicator()):Container(),
+//            Center(
+//               child: CircularProgressIndicator(),
+//            ),
+          ],
         ));
   }
+  List passData(int index) {
+    List<String> allDetails =[list_item[index]["name"],list_item[index]["materials"],list_item[index]["recipe"],list_item[index]["id"]];
+    return allDetails;
+  }
 }
+
 
 listContainer(BuildContext context, IconData image, String name, String like) {
   return Card(
