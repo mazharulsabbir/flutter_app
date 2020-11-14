@@ -109,10 +109,10 @@ class HomePage extends StatelessWidget {
           ),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: _data.getRecommendedOrders().length,
+          itemCount: _data.getDishItemList().length,
           itemBuilder: (context, index) {
             return RecommendedItemWidget(
-              orders: _data.getRecommendedOrders()[index],
+              dish: _data.getDishItemList()[index],
             );
           },
         ),

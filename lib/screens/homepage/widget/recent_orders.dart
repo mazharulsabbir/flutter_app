@@ -15,11 +15,13 @@ class RecentOrder {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () {
-            print(recentOrders[index].name);
+            print(recentOrders[index].dish.name);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ItemDetails(),
+                builder: (context) => ItemDetails(
+                  dish: recentOrders[index].dish,
+                ),
               ),
             );
           },
@@ -37,8 +39,8 @@ class RecentOrder {
                     height: 80,
                     width: 80,
                     child: SvgPicture.network(
-                      recentOrders[index].imgUrl,
-                      semanticsLabel: recentOrders[index].name,
+                      recentOrders[index].dish.imgUrl,
+                      semanticsLabel: recentOrders[index].dish.name,
                       placeholderBuilder: (BuildContext context) => Container(
                         padding: const EdgeInsets.all(20.0),
                         // height: 50,
@@ -60,14 +62,14 @@ class RecentOrder {
                           child: RichText(
                             overflow: TextOverflow.ellipsis,
                             text: TextSpan(
-                              text: recentOrders[index].name,
+                              text: recentOrders[index].dish.name,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
                         Text(
-                          "Pieces ${recentOrders[index].qty}",
+                          "Pieces ${recentOrders[index].dish.noOfPieces}",
                         ),
                         SizedBox(
                           height: 8,

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/model/recommended.dart';
+import 'package:flutter_app/data/model/dish_item.dart';
 import 'package:flutter_app/screens/homepage/view/item_detail.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RecommendedItemWidget extends StatelessWidget {
-  final RecommendedOrders orders;
+  final Dish dish;
 
-  RecommendedItemWidget({this.orders});
+  RecommendedItemWidget({this.dish});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // todo: make click action
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ItemDetails(),
+            builder: (context) => ItemDetails(dish: dish,),
           ),
         );
       },
@@ -30,11 +29,11 @@ class RecommendedItemWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(4),
                 child: SvgPicture.network(
-                  orders.imgUrl,
+                  dish.imgUrl,
                   height: 80.0,
                   width: 120.0,
                   fit: BoxFit.cover,
-                  semanticsLabel: orders.name,
+                  semanticsLabel: dish.name,
                   placeholderBuilder: (BuildContext context) => Container(
                     padding: const EdgeInsets.all(20.0),
                     height: 80,
@@ -50,11 +49,11 @@ class RecommendedItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    orders.name,
+                    dish.name,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Net wt. ${orders.netWt}",
+                    "Net wt. ${dish.netWt}",
                     style: TextStyle(
                       fontSize: 12,
                     ),
@@ -63,7 +62,7 @@ class RecommendedItemWidget extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    "\$${orders.price}",
+                    "\$${dish.price}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -84,7 +83,7 @@ class RecommendedItemWidget extends StatelessWidget {
                   size: 18,
                 ),
                 onPressed: () {
-                  print(orders.name);
+                  print(dish.name);
                 },
               ),
             ),

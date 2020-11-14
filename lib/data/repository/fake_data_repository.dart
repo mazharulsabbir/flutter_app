@@ -1,6 +1,6 @@
 import 'package:flutter_app/data/model/category.dart';
+import 'package:flutter_app/data/model/dish_item.dart';
 import 'package:flutter_app/data/model/recent_order.dart';
-import 'package:flutter_app/data/model/recommended.dart';
 
 class FakeDataRepository {
   List<Category> getCategories() {
@@ -52,102 +52,164 @@ class FakeDataRepository {
     _list.add(
       Order(
         id: 0,
-        name: 'Chicken Drumstick',
-        imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/3143/3143643.svg',
-        price: 100,
-        rate: 4.3,
-        qty: '5-7',
-        rateCount: 389,
+        dish: Dish(
+          id: 2,
+          name: 'Chicken Breast',
+          imgUrl:
+          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          price: '84',
+          rating: 5.0,
+          ratingCount: 67,
+          noOfPieces: '5-7',
+          netWt: '520gms',
+          instruction:
+          'For that craving to bite into something chunky and juice. '
+              'Dark, tender meat with bone'
+              'from the lower leg of the chicken.',
+        ),
         orderDate: "Orderd 2 days ago",
       ),
     );
     _list.add(
       Order(
         id: 1,
-        name: 'Chicken Drumstick',
-        imgUrl: 'https://www.flaticon.com/svg/static/icons/svg/909/909119.svg',
-        price: 100,
-        rate: 4.3,
-        qty: '5-7',
-        rateCount: 389,
+        dish: Dish(
+          id: 2,
+          name: 'Chicken Breast',
+          imgUrl:
+          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          price: '84',
+          rating: 5.0,
+          ratingCount: 67,
+          noOfPieces: '5-7',
+          netWt: '520gms',
+          instruction:
+          'For that craving to bite into something chunky and juice. '
+              'Dark, tender meat with bone'
+              'from the lower leg of the chicken.',
+        ),
         orderDate: "Orderd 2 days ago",
       ),
     );
     _list.add(
       Order(
         id: 2,
-        name: 'Chicken Drumstick',
-        imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/3076/3076125.svg',
-        price: 100,
-        rate: 4.3,
-        qty: '5-7',
-        rateCount: 389,
+        dish: Dish(
+          id: 2,
+          name: 'Chicken Breast',
+          imgUrl:
+          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          price: '84',
+          rating: 5.0,
+          ratingCount: 67,
+          noOfPieces: '5-7',
+          netWt: '520gms',
+          instruction:
+          'For that craving to bite into something chunky and juice. '
+              'Dark, tender meat with bone'
+              'from the lower leg of the chicken.',
+        ),
         orderDate: "Orderd 2 days ago",
       ),
     );
     _list.add(
       Order(
         id: 3,
-        name: 'Chicken Drumstick',
-        imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/2884/2884859.svg',
-        price: 100,
-        rate: 4.3,
-        qty: '5-7',
-        rateCount: 389,
+        dish: Dish(
+          id: 2,
+          name: 'Chicken Breast',
+          imgUrl:
+          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          price: '84',
+          rating: 5.0,
+          ratingCount: 67,
+          noOfPieces: '5-7',
+          netWt: '520gms',
+          instruction:
+          'For that craving to bite into something chunky and juice. '
+              'Dark, tender meat with bone'
+              'from the lower leg of the chicken.',
+        ),
         orderDate: "Orderd 2 days ago",
       ),
     );
     _list.add(
       Order(
         id: 4,
-        name: 'Chicken Drumstick',
-        imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
-        price: 100,
-        rate: 4.3,
-        qty: '5-7',
-        rateCount: 389,
+        dish: Dish(
+          id: 2,
+          name: 'Chicken Breast',
+          imgUrl:
+          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          price: '84',
+          rating: 5.0,
+          ratingCount: 67,
+          noOfPieces: '5-7',
+          netWt: '520gms',
+          instruction:
+          'For that craving to bite into something chunky and juice. '
+              'Dark, tender meat with bone'
+              'from the lower leg of the chicken.',
+        ),
         orderDate: "Orderd 2 days ago",
       ),
     );
     return _list;
   }
 
-  List<RecommendedOrders> getRecommendedOrders() {
-    var _list = List<RecommendedOrders>();
+  List<Dish> getDishItemList() {
+    var _list = List<Dish>();
     _list.add(
-      RecommendedOrders(
+      Dish(
         id: 0,
         name: 'Chicken Drumstick',
         imgUrl:
             'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
         price: '120',
+        rating: 5.0,
+        ratingCount: 67,
+        noOfPieces: '5-7',
         netWt: '520gms',
+        instruction:
+            'For that craving to bite into something chunky and juice. '
+            'Dark, tender meat with bone'
+            'from the lower leg of the chicken.',
       ),
     );
 
     _list.add(
-      RecommendedOrders(
+      Dish(
         id: 1,
         name: 'Chicken Curry Cut',
         imgUrl:
-        'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
         price: '90',
-        netWt: '340gms',
+        rating: 5.0,
+        ratingCount: 67,
+        noOfPieces: '5-7',
+        netWt: '520gms',
+        instruction:
+        'For that craving to bite into something chunky and juice. '
+            'Dark, tender meat with bone'
+            'from the lower leg of the chicken.',
       ),
     );
 
     _list.add(
-      RecommendedOrders(
+      Dish(
         id: 2,
         name: 'Chicken Breast',
         imgUrl:
-        'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
         price: '84',
-        netWt: '250gms',
+        rating: 5.0,
+        ratingCount: 67,
+        noOfPieces: '5-7',
+        netWt: '520gms',
+        instruction:
+        'For that craving to bite into something chunky and juice. '
+            'Dark, tender meat with bone'
+            'from the lower leg of the chicken.',
       ),
     );
 
