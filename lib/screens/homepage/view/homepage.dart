@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
           height: 10,
         ),
         SizedBox(
-          height: 100,
+          height: 80,
           child: RecentOrder(
             recentOrders: _data.getRecentOrders(),
           ).recentOrderListBuilder(),

@@ -28,18 +28,11 @@ class RecommendedItemWidget extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                 borderRadius: BorderRadius.circular(4),
-                child: SvgPicture.network(
+                child: Image.network(
                   dish.imgUrl,
-                  height: 80.0,
-                  width: 120.0,
+                  height: 70.0,
+                  width: 100.0,
                   fit: BoxFit.cover,
-                  semanticsLabel: dish.name,
-                  placeholderBuilder: (BuildContext context) => Container(
-                    padding: const EdgeInsets.all(20.0),
-                    height: 80,
-                    width: 80,
-                    child: const CircularProgressIndicator(),
-                  ),
                 ),
               ),
               SizedBox(

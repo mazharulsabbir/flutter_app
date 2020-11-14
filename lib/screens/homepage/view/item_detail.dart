@@ -14,43 +14,38 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: (context, bool) {
-            return <Widget>[
-              SliverAppBar(
-                expandedHeight: 150.0,
-                floating: false,
-                pinned: true,
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      _iconSet[_iconIndex],
-                    ),
-                    onPressed: () {},
+      body: NestedScrollView(
+        headerSliverBuilder: (context, bool) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 150.0,
+              floating: false,
+              pinned: true,
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    _iconSet[_iconIndex],
                   ),
-                ],
-                flexibleSpace: FlexibleSpaceBar(
-                  // title: Text("Collapsing Toolbar",
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 16.0,
-                  //     )),
-                  background: SvgPicture.network(
-                    dish.imgUrl,
-                    // fit: BoxFit.cover,
-                    height: 100,
-                    width: 100,
-                  ),
+                  onPressed: () {},
+                ),
+              ],
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.parallax,
+                background: Image.network(
+                  dish.imgUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ];
-          },
-          body: _body(dish),
-        ),
-        bottomNavigationBar: SizedBox(
-          height: 120,
-          child: _bottomNavigation(),
-        ));
+            ),
+          ];
+        },
+        body: _body(dish),
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 120,
+        child: _bottomNavigation(),
+      ),
+    );
   }
 }
 
@@ -63,14 +58,7 @@ Widget _body(Dish dish) {
     "https://www.flaticon.com/svg/static/icons/svg/3638/3638036.svg",
     "https://www.flaticon.com/svg/static/icons/svg/1684/1684375.svg",
   ];
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(16),
-      ),
-      // color: Colors.black,
-    ),
+  return SingleChildScrollView(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -389,14 +377,17 @@ Widget _bottomNavigation() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text("2 ITEM"),
-                  Text(
-                    "\$244 incl taxes",
-                  ),
-                ],
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("2 ITEM"),
+                    Text(
+                      "\$244 incl taxes",
+                    ),
+                  ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

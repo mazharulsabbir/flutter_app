@@ -54,9 +54,9 @@ class FakeDataRepository {
         id: 0,
         dish: Dish(
           id: 2,
-          name: 'Chicken Breast',
+          name: 'Chicken Drumstick',
           imgUrl:
-          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          'https://www.wholesomeyum.com/wp-content/uploads/2019/10/wholesomeyum-easy-crispy-baked-chicken-legs-drumsticks-recipe-8.jpg',
           price: '84',
           rating: 5.0,
           ratingCount: 67,
@@ -75,72 +75,9 @@ class FakeDataRepository {
         id: 1,
         dish: Dish(
           id: 2,
-          name: 'Chicken Breast',
+          name: 'Chicken Curry Cut',
           imgUrl:
-          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
-          price: '84',
-          rating: 5.0,
-          ratingCount: 67,
-          noOfPieces: '5-7',
-          netWt: '520gms',
-          instruction:
-          'For that craving to bite into something chunky and juice. '
-              'Dark, tender meat with bone'
-              'from the lower leg of the chicken.',
-        ),
-        orderDate: "Orderd 2 days ago",
-      ),
-    );
-    _list.add(
-      Order(
-        id: 2,
-        dish: Dish(
-          id: 2,
-          name: 'Chicken Breast',
-          imgUrl:
-          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
-          price: '84',
-          rating: 5.0,
-          ratingCount: 67,
-          noOfPieces: '5-7',
-          netWt: '520gms',
-          instruction:
-          'For that craving to bite into something chunky and juice. '
-              'Dark, tender meat with bone'
-              'from the lower leg of the chicken.',
-        ),
-        orderDate: "Orderd 2 days ago",
-      ),
-    );
-    _list.add(
-      Order(
-        id: 3,
-        dish: Dish(
-          id: 2,
-          name: 'Chicken Breast',
-          imgUrl:
-          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
-          price: '84',
-          rating: 5.0,
-          ratingCount: 67,
-          noOfPieces: '5-7',
-          netWt: '520gms',
-          instruction:
-          'For that craving to bite into something chunky and juice. '
-              'Dark, tender meat with bone'
-              'from the lower leg of the chicken.',
-        ),
-        orderDate: "Orderd 2 days ago",
-      ),
-    );
-    _list.add(
-      Order(
-        id: 4,
-        dish: Dish(
-          id: 2,
-          name: 'Chicken Breast',
-          imgUrl:
-          'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+          'https://i.pinimg.com/originals/09/fa/10/09fa101f80f86940bbe753e94bd686c6.jpg',
           price: '84',
           rating: 5.0,
           ratingCount: 67,
@@ -164,7 +101,7 @@ class FakeDataRepository {
         id: 0,
         name: 'Chicken Drumstick',
         imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+            'https://www.wholesomeyum.com/wp-content/uploads/2019/10/wholesomeyum-easy-crispy-baked-chicken-legs-drumsticks-recipe-8.jpg',
         price: '120',
         rating: 5.0,
         ratingCount: 67,
@@ -182,7 +119,7 @@ class FakeDataRepository {
         id: 1,
         name: 'Chicken Curry Cut',
         imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+            'https://i.pinimg.com/originals/09/fa/10/09fa101f80f86940bbe753e94bd686c6.jpg',
         price: '90',
         rating: 5.0,
         ratingCount: 67,
@@ -200,7 +137,7 @@ class FakeDataRepository {
         id: 2,
         name: 'Chicken Breast',
         imgUrl:
-            'https://www.flaticon.com/svg/static/icons/svg/2243/2243653.svg',
+            'https://cafedelites.com/wp-content/uploads/2018/12/Creamy-Garlic-Chicken-Breasts-IMAGE-54.jpg',
         price: '84',
         rating: 5.0,
         ratingCount: 67,
